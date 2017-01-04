@@ -5,18 +5,15 @@ import { getTotal, getCartItems } from '../reducers'
 import { addToCart, subFromCart } from '../actions'
 import Cart from '../components/cart/Cart'
 
-const CartContainer = ({ items, total, addToCart, subFromCart }) => {
-  if(items.length){
-    return  (
+const CartContainer = ({ items, total, addToCart, subFromCart }) =>
+  <div>
+    { items.length ?
       <Cart
         items={items}
         total={total}
         onAddToCartClicked={addToCart}
         onSubFromCartClicked={subFromCart}
-      />
-    )
-  } else {
-    return (
+      /> :
       <section className="cart-alert">
         <h1 className="cart-alert-ttl">カートの中身はありません</h1>
         <Link to={"/"}>
@@ -25,9 +22,8 @@ const CartContainer = ({ items, total, addToCart, subFromCart }) => {
           </button>
         </Link>
       </section>
-    )
-  }
-}
+    }
+  </div>
 
 CartContainer.propTypes = {
   items: PropTypes.array.isRequired,
