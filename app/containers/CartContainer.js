@@ -2,14 +2,17 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { getTotal, getCartItems } from '../reducers'
+import { addToCart, subFromCart } from '../actions'
 import Cart from '../components/cart/Cart'
 
-const CartContainer = ({ items, total }) => {
+const CartContainer = ({ items, total, addToCart, subFromCart }) => {
   if(items.length){
     return  (
       <Cart
         items={items}
         total={total}
+        onAddToCartClicked={addToCart}
+        onSubFromCartClicked={subFromCart}
       />
     )
   } else {
@@ -28,7 +31,9 @@ const CartContainer = ({ items, total }) => {
 
 CartContainer.propTypes = {
   items: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired
+  total: PropTypes.number.isRequired,
+  addToCart: PropTypes.func.isRequired,
+  subFromCart: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
@@ -38,4 +43,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
+  { addToCart, subFromCart }
 )(CartContainer)

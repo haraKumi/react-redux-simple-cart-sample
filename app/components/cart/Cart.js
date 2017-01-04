@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import CartItem from './CartItem'
 import { formatPrice } from '../../util/format'
 
-const Cart = ({ items, total }) =>
+const Cart = ({ items, total, onAddToCartClicked, onSubFromCartClicked }) =>
   <div id="bookit-area" className="cart-area">
     <ul className="outer">
       {items.map(item =>
@@ -12,6 +12,8 @@ const Cart = ({ items, total }) =>
           title={item.title}
           priceInfo={item.priceInfo}
           quantity={item.quantity}
+          onAddToCartClicked={() => onAddToCartClicked(item.id, item.title, item.priceInfo.afterDiscount.price)}
+          onSubFromCartClicked={() => onSubFromCartClicked(item.id)}
         />
       )}
     </ul>

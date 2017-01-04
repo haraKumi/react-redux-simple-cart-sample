@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { formatPrice } from '../../util/format'
 
-const CartItem = ({ title, priceInfo, quantity }) =>
+const CartItem = ({ title, priceInfo, quantity, onAddToCartClicked, onSubFromCartClicked }) =>
   <li className="order-nav clearfix">
     <div className="order-nav__block order-nav__quantity">
       <div className="order-nav__label">Activity</div>
@@ -13,6 +13,20 @@ const CartItem = ({ title, priceInfo, quantity }) =>
         <span>×</span>
         <span className="">{quantity}</span>
         <span className="">枚</span>
+        <div className="menu-quantity__controller">
+          <button
+            className="menu-quantity__controller__btn"
+            onClick={onSubFromCartClicked}
+            disabled={quantity > 0 ? '' : 'disabled'}>
+            <span className="minus">ー</span>
+          </button>
+          <span className="quantity">{quantity}</span>
+          <button
+            className="menu-quantity__controller__btn"
+            onClick={onAddToCartClicked}>
+            <span className="plus">＋</span>
+          </button>
+        </div>
       </div>
       <div className="order-nav__label">SubTotal</div>
       <div className="order-nav__label--subtotal">

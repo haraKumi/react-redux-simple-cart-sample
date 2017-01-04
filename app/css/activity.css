@@ -11196,6 +11196,11 @@ body.lang_zh-TW textarea,body.lang_zh-TW input,body.lang_zh-TW button {
   color: #404040;
 }
 
+
+#bookit-area.cart-area .order-nav__label--ttl {
+  position: relative;
+}
+
 #bookit-area .order-nav__label--subtotal {
   text-align: right;
 }
@@ -11582,6 +11587,10 @@ body.lang_zh-TW textarea,body.lang_zh-TW input,body.lang_zh-TW button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none
+}
+
+#bookit-area.cart-area .menu-quantity__controller {
+  top: 13px;
 }
 
 #bookit-area .menu-quantity__controller>* {
