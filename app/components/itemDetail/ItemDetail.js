@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import ItemDetailVisual from './ItemDetailVisual'
-import ItemDetailContentL from './ItemDetailContentL'
-import ItemDetailContentRContainer from '../../containers/ItemDetailContentRContainer'
+import ItemDetailMain from './ItemDetailMain'
+import ItemDetailSelectContainer from '../../containers/ItemDetailSelectContainer'
 
 const ItemDetail = ({ detail, quantity, subTotal }) => {
   const { id, title, priceInfo, detailInfo } = detail;
@@ -11,11 +11,11 @@ const ItemDetail = ({ detail, quantity, subTotal }) => {
         <ItemDetailVisual detailInfo={detailInfo}/>
         <div id="content">
           <div className="content-inner">
-            <ItemDetailContentL
+            <ItemDetailMain
               title={title}
               detailInfo={detailInfo}
             />
-            <ItemDetailContentRContainer
+            <ItemDetailSelectContainer
               id={id}
               title={title}
               priceInfo={priceInfo}

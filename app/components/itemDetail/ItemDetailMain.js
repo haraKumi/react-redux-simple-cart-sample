@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-const ItemDetailContentL = ({ title, detailInfo }) =>
+const ItemDetailMain = ({ title, detailInfo }) =>
   <div className="col_2 col_main_L">
     <section id="activity-content">
       <div id="main_content" className="block--content has-frame">
@@ -54,10 +54,10 @@ const ItemDetailContentL = ({ title, detailInfo }) =>
     <div className="stopper"></div>
   </div>
 
-ItemDetailContentL.propTypes = {
+ItemDetailMain.propTypes = {
   detailInfo: PropTypes.shape({
     img: PropTypes.object.isRequired,
   }).isRequired,
 }
 
-export default ItemDetailContentL
+export default ItemDetailMain

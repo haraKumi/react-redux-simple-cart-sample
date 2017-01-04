@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { formatPrice } from '../../util/format'
 
-const ItemDetailContentR = ({ title, priceInfo, quantity, subTotal, onAddToCartClicked, onSubFromCartClicked }) =>
+const ItemDetailSelect = ({ title, priceInfo, quantity, subTotal, onAddToCartClicked, onSubFromCartClicked }) =>
   <div className="col_2 col_sub_R">
     <section className="activity__main-menu">
       <div id="bookit-area" className="special-offer-bookit">
@@ -69,10 +69,10 @@ const ItemDetailContentR = ({ title, priceInfo, quantity, subTotal, onAddToCartC
     </section>
   </div>
 
-ItemDetailContentR.propTypes = {
+ItemDetailSelect.propTypes = {
   priceInfo: PropTypes.shape({
     afterDiscount: PropTypes.object.isRequired
   })
 }
 
-export default ItemDetailContentR
+export default ItemDetailSelect

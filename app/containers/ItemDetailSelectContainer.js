@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { addToCart, subFromCart } from '../actions'
-import ItemDetailContentR from '../components/itemDetail/ItemDetailContentR'
+import ItemDetailSelect from '../components/itemDetail/ItemDetailSelect'
 
-const ItemDetailContentRContainer = ({ id, title, priceInfo, quantity, subTotal, addToCart, subFromCart }) =>
-  <ItemDetailContentR
+const ItemDetailSelectContainer = ({ id, title, priceInfo, quantity, subTotal, addToCart, subFromCart }) =>
+  <ItemDetailSelect
     title={title}
     priceInfo={priceInfo}
     quantity={quantity}
@@ -13,7 +13,7 @@ const ItemDetailContentRContainer = ({ id, title, priceInfo, quantity, subTotal,
     onSubFromCartClicked={() => subFromCart(id)}
   />
 
-ItemDetailContentRContainer.propTypes = {
+ItemDetailSelectContainer.propTypes = {
   priceInfo: PropTypes.shape({
     afterDiscount: PropTypes.object.isRequired
   }),
@@ -26,4 +26,4 @@ const mapStateToProps = state => state
 export default connect(
   mapStateToProps,
   { addToCart, subFromCart }
-)(ItemDetailContentRContainer)
+)(ItemDetailSelectContainer)
