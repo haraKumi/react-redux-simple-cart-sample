@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 import ItemDetailVisual from './ItemDetailVisual'
 import ItemDetailContentL from './ItemDetailContentL'
-import ItemDetailContentR from './ItemDetailContentR'
+import ItemDetailContentRContainer from '../../containers/ItemDetailContentRContainer'
 
-const ItemDetail = ({ detail, quantity, subTotal, onAddToCartClicked, onSubFromCartClicked }) => {
-  const { title, priceInfo, detailInfo } = detail;
+const ItemDetail = ({ detail, quantity, subTotal }) => {
+  const { id, title, priceInfo, detailInfo } = detail;
   return (
     <div>
       <div id="activity">
@@ -13,14 +13,14 @@ const ItemDetail = ({ detail, quantity, subTotal, onAddToCartClicked, onSubFromC
           <div className="content-inner">
             <ItemDetailContentL
               title={title}
-              detailInfo={detailInfo}/>
-            <ItemDetailContentR
+              detailInfo={detailInfo}
+            />
+            <ItemDetailContentRContainer
+              id={id}
               title={title}
               priceInfo={priceInfo}
               quantity={quantity}
               subTotal={subTotal}
-              onAddToCartClicked={onAddToCartClicked}
-              onSubFromCartClicked={onSubFromCartClicked}
             />
           </div>
         </div>
@@ -31,6 +31,8 @@ const ItemDetail = ({ detail, quantity, subTotal, onAddToCartClicked, onSubFromC
 
 ItemDetail.propTypes = {
   detail: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    priceInfo: PropTypes.object.isRequired,
     detailInfo: PropTypes.object.isRequired,
   }).isRequired,
 }
