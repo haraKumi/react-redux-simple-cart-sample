@@ -3,7 +3,7 @@ import ItemDetailVisual from './ItemDetailVisual'
 import ItemDetailContentL from './ItemDetailContentL'
 import ItemDetailContentR from './ItemDetailContentR'
 
-const ItemDetail = ({ detail, quantity, subTotal, onAddToCartClicked }) => {
+const ItemDetail = ({ detail, quantity, subTotal, onAddToCartClicked, onSubFromCartClicked }) => {
   const { title, priceInfo, detailInfo } = detail;
   return (
     <div>
@@ -20,6 +20,7 @@ const ItemDetail = ({ detail, quantity, subTotal, onAddToCartClicked }) => {
               quantity={quantity}
               subTotal={subTotal}
               onAddToCartClicked={onAddToCartClicked}
+              onSubFromCartClicked={onSubFromCartClicked}
             />
           </div>
         </div>

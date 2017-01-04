@@ -20,14 +20,21 @@ const addToCartAction = (itemId, itemTitle, itemPrice) => ({
 export const addToCart = (itemId, itemTitle, itemPrice) => dispatch => {
   dispatch(addToCartAction(itemId, itemTitle, itemPrice))
 }
-//
-// const subFromCartAction = itemId => ({
-//   type: types.SUB_FROM_CART,
-//   itemId
-// })
-// export const subFromCart = itemId => dispatch => {
-//   dispatch(subFromCartAction(itemId))
-// }
+
+const subFromCartAction = itemId => ({
+  type: types.SUB_FROM_CART,
+  itemId
+})
+const delFromCartAction = itemId => ({
+  type: types.DEL_FROM_CART,
+  itemId
+})
+export const subFromCart = itemId => (dispatch, getState) => {
+  if(getState().cart.quantityById[itemId] === 1 ) {
+    dispatch(delFromCartAction(itemId))
+  }
+  dispatch(subFromCartAction(itemId))
+}
 
 const selectItemAction = itemId => ({
   type: types.SELECT_ITEM,

@@ -1,17 +1,18 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions'
+import { addToCart, subFromCart } from '../actions'
 import { getItemDetail } from '../reducers/items'
 import { getQuantity } from '../reducers/cart'
 import { getSubTotal } from '../reducers/'
 import ItemDetail from '../components/itemDetail/ItemDetail'
 
-const ItemDetailContainer = ({ itemDetail, quantity, subTotal, addToCart }) =>
+const ItemDetailContainer = ({ itemDetail, quantity, subTotal, addToCart, subFromCart }) =>
   <ItemDetail
     detail={itemDetail}
     quantity={quantity}
     subTotal={subTotal}
     onAddToCartClicked={() => addToCart(itemDetail.id, itemDetail.title, itemDetail.priceInfo.afterDiscount.price)}
+    onSubFromCartClicked={() => subFromCart(itemDetail.id)}
   />
 
 ItemDetailContainer.propTypes = {
@@ -24,6 +25,7 @@ ItemDetailContainer.propTypes = {
   quantity: PropTypes.number.isRequired,
   subTotal: PropTypes.number.isRequired,
   addToCart: PropTypes.func.isRequired,
+  subFromCart: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
@@ -34,5 +36,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addToCart }
+  { addToCart, subFromCart }
 )(ItemDetailContainer)

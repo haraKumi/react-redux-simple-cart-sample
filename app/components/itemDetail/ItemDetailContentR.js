@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
 import { formatPrice } from '../../util/format'
 
-const ItemDetailContentR = ({ title, priceInfo, quantity, subTotal, onAddToCartClicked }) =>
+const ItemDetailContentR = ({ title, priceInfo, quantity, subTotal, onAddToCartClicked, onSubFromCartClicked }) =>
   <div className="col_2 col_sub_R">
     <section className="activity__main-menu">
       <div id="bookit-area" className="special-offer-bookit">
@@ -25,7 +25,8 @@ const ItemDetailContentR = ({ title, priceInfo, quantity, subTotal, onAddToCartC
                     <div className="menu-quantity__controller">
                       <button
                         className="menu-quantity__controller__btn"
-                        disabled='disabled'>
+                        onClick={onSubFromCartClicked}
+                        disabled={quantity > 0 ? '' : 'disabled'}>
                         <span className="minus">ー</span>
                       </button>
                       <span className="quantity">{quantity}</span>

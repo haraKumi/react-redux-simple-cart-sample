@@ -1,6 +1,7 @@
 import {
   ADD_TO_CART,
-  // SUB_FROM_CART,
+  SUB_FROM_CART,
+  DEL_FROM_CART
 } from '../constants/ActionTypes'
 
 const initialState = {
@@ -15,6 +16,10 @@ const addedIds = (state = initialState.addedIds, action) => {
         return state
       }
       return [ action.itemId, ...state ]
+    case DEL_FROM_CART:
+      return state.filter(v =>
+        v !== action.itemId
+      )
     default:
       return state
   }
@@ -28,11 +33,11 @@ const quantityById = (state = initialState.quantityById, action) => {
       return { ...state,
         [itemId]:  (state[itemId] || 0) + 1
       }
-    // case SUB_FROM_CART:
-    //   itemId = action.itemId
-    //   return { ...state,
-    //     [itemId]:  state[itemId] - 1
-    //   }
+    case SUB_FROM_CART:
+      itemId = action.itemId
+      return { ...state,
+        [itemId]:  state[itemId] - 1
+      }
     default:
       return state
   }
