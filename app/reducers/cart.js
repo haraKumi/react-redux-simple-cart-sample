@@ -17,9 +17,11 @@ const addedIds = (state = initialState.addedIds, action) => {
       }
       return [ action.itemId, ...state ]
     case DEL_FROM_CART:
-      return state.filter(v =>
-        v !== action.itemId
-      )
+      return state.filter(id => id !== action.itemId)
+        .reduce((prevIds, currentId) => {
+          prevIds.push(currentId)
+          return prevIds
+        }, [])
     default:
       return state
   }
